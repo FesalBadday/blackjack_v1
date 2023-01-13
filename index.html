@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlackJack</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script type="module" src="assets/js/client.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <h1>Blackjack Game</h1>
+    <!-- Draggable DIV -->
+    <div class="mydiv" style="top: 60%; left: 50%; transform: translate(-50%, -50%);">
+      <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+      <div class="mydivheader">
+        <div class="bank">
+          <span></span>
+          <div class="play-on"></div>
+          <p></p>
+          <div class="chips"></div>
+          <p></p>
+          <button class="deal">Deal</button>
+          <button class="all-in">All In</button>
+          <button class="clear">Clear</button>
+          <button class="openRules">Rules</button>
+          <button class="play-again hide-toggle">Play Again</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup">
+      <h2>House Rules</h2>
+      <ol>
+        <li>The goal of the game is to beat the dealer's hand without going over 21.</li>
+        <li>Face cards are worth 10. Aces are worth 1 or 11, whichever makes a better hand.</li>
+        <li>Each player starts with two cards, one of the dealer's cards is hidden until the end.</li>
+        <li>Dealer stands on 18.</li>
+        <li>Hit: Take another card.</li>
+        <li>Stand: Take no more cards.</li>
+        <li>All In: You play with all of your money.</li>
+        <li>Double is only allowed in the first round.</li>
+        <li>Double X2: Increase the initial bet by 100% and take exactly one more card.</li>
+        <li>Push happens when you and the dealer have the same hand value. When this happens your bet will be
+          returned. You
+          don't win anything and you don't lose anything.</li>
+      </ol>
+      <button class="closeRules">Done</button>
+    </div>
+
+    <section class="game-section hide-toggle">
+      <div class="dealer-cards"></div>
+
+      <div class="action">
+        <h2><span class="dealer-score"></span> Dealer</h2>
+
+        <button class="stand">Stand</button>
+        <button class="restart hide-toggle">Restart Game</button>
+        <button class="double">Double X2</button>
+        <button class="hit">Hit</button>
+
+        <h2><span class="player-score"></span> Player</h2>
+      </div>
+
+      <div class="player-cards"></div>
+
+      <div class="score-output hide-toggle">
+        <p></p>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

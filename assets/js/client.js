@@ -66,7 +66,7 @@ const rules = () => {
 };
 
 const playeAgain = () => {
-  location.reload();
+  location.replace("index.html")
 };
 
 const double = () => {

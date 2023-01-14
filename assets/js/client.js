@@ -16,7 +16,6 @@ export const errorMsg = document.querySelector('.start-section')
 
 export let doubled = false;
 export let cashOnTable = 0;
-let highestScore = 0;
 
 const start = () => {
   if (cashOnTable > 0) {
@@ -35,14 +34,6 @@ const start = () => {
     document.querySelector(".game-section").classList.toggle("hide-toggle");
 
     startGame();
-
-    axios({
-      method: 'post',
-      url: '/',
-      data: {
-        newGame: true
-      }
-    })
 
   } else {
     alert('Choose an amount to play with first')
@@ -66,7 +57,7 @@ const rules = () => {
 };
 
 const playeAgain = () => {
-  location.replace("index.html")
+  location.reload();
 };
 
 const double = () => {
@@ -90,18 +81,6 @@ const restart = () => {
   document.querySelector(".all-in").classList.toggle("hide-toggle");
   document.querySelector(".clear").classList.toggle("hide-toggle");
   document.querySelector(".openRules").classList.toggle("hide-toggle");
-
-  if (cashInBank > highestScore) {
-    highestScore = cashInBank;
-
-    axios({
-      method: 'post',
-      url: '/',
-      data: {
-        highestScore: highestScore
-      }
-    })
-  }
 
   document.querySelector("h1").classList.toggle("hide-toggle");
   document.querySelector(".game-section").classList.toggle("hide-toggle");

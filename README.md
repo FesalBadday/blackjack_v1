@@ -31,4 +31,3 @@
 - [pixeltrue-error](https://icons8.com/illustrations/illustration/pixeltrue-error) By [Pixeltrue](https://www.pixeltrue.com/packs) From [Icons8](https://www.icons8.com). [License](https://www.icons8.com/license)
 - [Deck of Cards API](https://deckofcardsapi.com)
 - W3Schools [Create a Draggable HTML Element](https://www.w3schools.com/howto/howto_js_draggable.asp)
-- Node.js Passport Login System Tutorial [Web Dev Simplified](https://www.youtube.com/watch?v=-RCnNyD0L-s)

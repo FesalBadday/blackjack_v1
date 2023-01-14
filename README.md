@@ -6,7 +6,7 @@
 
 **Repo :** [Github Repo](https://github.com/FesalBadday/blackjack_v1)
 
-**Site :** [Heroku](https://fesal.me/blackjack_v1)
+**Site :** [Github Page](https://fesal.me/blackjack_v1)
 
 **Rules :**
 

@@ -55,7 +55,7 @@ button {
   font-size: 2rem;
   font-weight: bold;
   z-index: 1;
-  padding: 1.5rem 3rem;
+  padding: 1.5rem;
   background-color: #0ab7dd;
   border-radius: 1rem;
   border: none;
@@ -67,6 +67,11 @@ button {
 
 .all-in {
   background-color: #59da27;
+}
+
+.openRules {
+  background-color: #ff0000;
+  padding: 1.5rem 7rem;
 }
 
 button:hover {

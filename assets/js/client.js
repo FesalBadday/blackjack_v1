@@ -54,6 +54,7 @@ const clear = () => {
 
 const rules = () => {
   document.querySelector(".popup").classList.toggle("rulesPop");
+  document.querySelector(".openRules").classList.toggle("hide-toggle");
 };
 
 const playeAgain = () => {

@@ -30,22 +30,30 @@
         </div>
       </div>
 
+      <div class="insurance-prompt hide-toggle">
+        <p>Dealer shows an Ace. Buy Insurance?</p>
+        <div class="insurance-actions">
+          <button class="btn btn-gold insure-yes">Yes</button>
+          <button class="btn btn-dark insure-no">No</button>
+        </div>
+      </div>
+
       <div class="table-section dealer-section">
         <div class="score-badge dealer-score-badge hide-toggle"><span class="dealer-score"></span></div>
         <div class="dealer-cards card-rack"></div>
       </div>
 
       <div class="table-section player-section">
-
         <div class="score-output hide-toggle">
           <p></p>
         </div>
+        <div class="player-hands-container"></div>
 
-        <div class="player-cards card-rack"></div>
-        <div class="score-badge player-score-badge hide-toggle"><span class="player-score"></span></div>
-
-        <div class="betting-circle">
-          <div class="play-on"></div>
+        <div class="bet-area">
+          <div class="active-bet-badge">
+            <span class="bet-label">Current Wager</span>
+            <div class="play-on"></div>
+          </div>
         </div>
       </div>
 
@@ -65,9 +73,9 @@
         <button class="btn btn-action hit">Hit</button>
         <button class="btn btn-action stand">Stand</button>
         <button class="btn btn-action double">Double x2</button>
+        <button class="btn btn-action split hide-toggle">Split</button>
         <button class="btn btn-dark restart hide-toggle">New Round</button>
       </div>
-
     </div>
 
     <div class="popup table-modal">
@@ -75,10 +83,10 @@
       <ol>
         <li>Beat the dealer's hand without going over 21.</li>
         <li>Face cards are worth 10. Aces are 1 or 11.</li>
-        <li>Each player starts with two cards; one dealer card is hidden.</li>
         <li>Dealer stands on 18.</li>
-        <li>Double is only allowed in the first round.</li>
-        <li>Push returns your bet (no win, no loss).</li>
+        <li><b>Double:</b> Permitted on first two cards.</li>
+        <li><b>Split:</b> Permitted if first two cards have equal value.</li>
+        <li><b>Insurance:</b> Offered if dealer shows an Ace. Pays 2:1.</li>
       </ol>
       <button class="btn btn-gold closeRules">Close</button>
     </div>

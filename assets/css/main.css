@@ -138,9 +138,10 @@ body {
 
 .player-section {
   margin-top: auto;
-  margin-bottom: 1rem;
-  min-height: 240px;
+  margin-bottom: 0;
+  min-height: 150px;
   position: relative;
+  z-index: 30;
 }
 
 .card-rack {
@@ -205,8 +206,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   z-index: 10;
+  flex-shrink: 0;
 }
 
 .chips-rack {
@@ -420,4 +422,153 @@ body {
     padding: 0.6rem 1rem;
     font-size: 0.85rem;
   }
+}
+
+/* =========================================
+   SPLIT HANDS & INSURANCE UI
+   ========================================= */
+.player-hands-container:empty {
+  min-height: 0;
+  display: none;
+}
+
+.player-hands-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 140px;
+  position: relative;
+  z-index: 10;
+}
+
+.hand-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+  /* Dim inactive hands */
+  transform: scale(0.9);
+}
+
+.hand-wrapper.active-hand {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hand-wrapper.active-hand .score-badge {
+  border-color: #00f0ff;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  color: #00f0ff;
+}
+
+.insurance-prompt {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(10, 10, 15, 0.95);
+  border: 2px solid #ffaa00;
+  padding: 1.5rem 3rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 170, 0, 0.2);
+  z-index: 100;
+  animation: popIn 0.3s ease-out;
+}
+
+.insurance-prompt p {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.insurance-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* =========================================
+   PREMIUM BETTING BADGE (Glassmorphism + Neon)
+   ========================================= */
+.bet-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto 2.5rem auto;
+  position: relative;
+  z-index: 20;
+}
+
+.active-bet-badge {
+  background: rgba(10, 15, 20, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 240, 255, 0.15);
+  border-radius: 50px;
+  padding: 0.6rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+}
+
+.bet-label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #a0aab5;
+  margin-bottom: 0.3rem;
+}
+
+.active-bet-badge .play-on {
+  color: #00f0ff;
+  font-size: 1.8rem;
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+  font-weight: bold;
+  margin: 0;
+}
+
+/* =========================================
+   3D CARD DEALING ANIMATION
+   ========================================= */
+@keyframes dealCard3D {
+  0% {
+    opacity: 0;
+    transform: translate(150px, -250px) rotate(-45deg) scale(0.6) perspective(600px) rotateY(45deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0) scale(1) perspective(600px) rotateY(0deg);
+  }
+}
+
+.card-rack img {
+  width: clamp(70px, 9vw, 110px);
+  margin-left: -35px;
+  border-radius: 6px;
+  box-shadow: -6px 8px 15px rgba(0, 0, 0, 0.6), inset 0 0 2px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.card-rack img:first-child {
+  margin-left: 0;
+}
+
+.card-rack img:hover {
+  transform: translateY(-15px) scale(1.05);
+  z-index: 20;
+  box-shadow: -8px 12px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* This class will now be applied dynamically by JS */
+.deal-anim {
+  animation: dealCard3D 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }

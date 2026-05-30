@@ -4,79 +4,84 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlackJack</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Classic Blackjack</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <script type="module" src="assets/js/client.js"></script>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <main>
-    <h1>Blackjack Game</h1>
-    <!-- Draggable DIV -->
-    <div class="mydiv" style="top: 60%; left: 50%; transform: translate(-50%, -50%);">
-      <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-      <div class="mydivheader">
-        <div class="bank">
-          <span></span>
-          <div class="play-on"></div>
-          <p></p>
-          <div class="chips"></div>
-          <p></p>
-          <button class="deal">Deal</button>
-          <button class="all-in">All In</button>
-          <button class="clear">Clear</button>
-          <p></p>
-          <button class="openRules">Rules</button>
-          <button class="play-again hide-toggle">Play Again</button>
+  <main class="casino-table">
+    <div class="table-felt">
+
+      <header class="top-nav">
+        <button class="btn btn-dark openRules">House Rules</button>
+        <div class="bank-display">
+          <span class="bank-amount"></span>
+        </div>
+      </header>
+
+      <div class="table-markings">
+        <h1 class="payout-text">BLACKJACK PAYS 3 TO 2</h1>
+        <p class="dealer-rules">Dealer must draw to 17 and stand on 18</p>
+        <div class="insurance-line">
+          <span>INSURANCE PAYS 2 TO 1</span>
         </div>
       </div>
+
+      <div class="table-section dealer-section">
+        <div class="score-badge dealer-score-badge hide-toggle"><span class="dealer-score"></span></div>
+        <div class="dealer-cards card-rack"></div>
+      </div>
+
+      <div class="table-section player-section">
+
+        <div class="score-output hide-toggle">
+          <p></p>
+        </div>
+
+        <div class="player-cards card-rack"></div>
+        <div class="score-badge player-score-badge hide-toggle"><span class="player-score"></span></div>
+
+        <div class="betting-circle">
+          <div class="play-on"></div>
+        </div>
+      </div>
+
+      <div class="betting-controls">
+        <div class="chips-rack">
+          <div class="chips"></div>
+        </div>
+        <div class="action-buttons">
+          <button class="btn btn-gold deal">Deal</button>
+          <button class="btn btn-dark clear">Clear Bet</button>
+          <button class="btn btn-dark all-in">All In</button>
+        </div>
+        <button class="btn btn-gold play-again hide-toggle">Play Again</button>
+      </div>
+
+      <div class="game-controls hide-toggle">
+        <button class="btn btn-action hit">Hit</button>
+        <button class="btn btn-action stand">Stand</button>
+        <button class="btn btn-action double">Double x2</button>
+        <button class="btn btn-dark restart hide-toggle">New Round</button>
+      </div>
+
     </div>
 
-    <div class="popup">
+    <div class="popup table-modal">
       <h2>House Rules</h2>
       <ol>
-        <li>The goal of the game is to beat the dealer's hand without going over 21.</li>
-        <li>Face cards are worth 10. Aces are worth 1 or 11, whichever makes a better hand.</li>
-        <li>Each player starts with two cards, one of the dealer's cards is hidden until the end.</li>
+        <li>Beat the dealer's hand without going over 21.</li>
+        <li>Face cards are worth 10. Aces are 1 or 11.</li>
+        <li>Each player starts with two cards; one dealer card is hidden.</li>
         <li>Dealer stands on 18.</li>
-        <li>Hit: Take another card.</li>
-        <li>Stand: Take no more cards.</li>
-        <li>All In: You play with all of your money.</li>
         <li>Double is only allowed in the first round.</li>
-        <li>Double X2: Increase the initial bet by 100% and take exactly one more card.</li>
-        <li>Push happens when you and the dealer have the same hand value. When this happens your bet will be
-          returned. You
-          don't win anything and you don't lose anything.</li>
+        <li>Push returns your bet (no win, no loss).</li>
       </ol>
-      <button class="closeRules">Done</button>
+      <button class="btn btn-gold closeRules">Close</button>
     </div>
-
-    <section class="game-section hide-toggle">
-      <div class="dealer-cards"></div>
-
-      <div class="action">
-        <h2><span class="dealer-score"></span> Dealer</h2>
-
-        <button class="stand">Stand</button>
-        <button class="restart hide-toggle">Restart Game</button>
-        <button class="double">Double X2</button>
-        <button class="hit">Hit</button>
-
-        <h2><span class="player-score"></span> Player</h2>
-      </div>
-
-      <div class="player-cards"></div>
-
-      <div class="score-output hide-toggle">
-        <p></p>
-      </div>
-    </section>
   </main>
 </body>
 

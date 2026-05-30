@@ -20,7 +20,6 @@
 - Double X2: Increase the initial bet by 100% and take exactly one more card.
 - The dealer stands on 18.
 - A double is only allowed in the first round.
-- Leaderboard: You have to log in to save your scores or you can play as a guest but your scores will not be saved.
 - Have fun.
 
 ---

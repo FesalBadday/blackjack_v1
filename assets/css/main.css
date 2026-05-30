@@ -1,11 +1,10 @@
 /* =========================================
-   GLOBAL RESET & SCROLLBAR REMOVAL 
+   1. GLOBAL RESET & SCROLLBAR REMOVAL 
    ========================================= */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* Mandated rule: complete scrollbar removal */
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
 }
@@ -15,7 +14,7 @@
 }
 
 body {
-  background-color: #000;
+  background-color: #050505;
   color: #fff;
   font-family: 'Aclonica', sans-serif;
   height: 100dvh;
@@ -26,26 +25,25 @@ body {
 }
 
 /* =========================================
-   THE CASINO TABLE & FELT
+   2. CASINO TABLE & FELT ENVIRONMENT
    ========================================= */
 .casino-table {
   width: 100%;
   height: 100%;
-  max-width: 1400px;
-  background-color: #111;
-  /* Leather bumper effect */
-  padding: 1.5rem;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 1);
+  max-width: 2560px;
+  /* Unlocks ultra-wide/4K scaling */
+  padding: clamp(0.5rem, 2vw, 2rem);
+  background-color: #0a0a0a;
+  display: flex;
+  flex-direction: column;
 }
 
 .table-felt {
-  width: 100%;
-  height: 100%;
-  border-radius: 40px;
-  /* Realistic Casino Green Felt */
+  flex: 1;
+  /* Automatically takes up all available vertical space */
+  border-radius: clamp(20px, 4vw, 60px);
   background: radial-gradient(circle at 50% 30%, #157B36 0%, #083b19 80%);
-  border: 12px solid #2a1610;
-  /* Dark wood/leather trim */
+  border: clamp(6px, 1.5vw, 16px) solid #2a1610;
   box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 10px 30px rgba(0, 0, 0, 0.9);
   position: relative;
   display: flex;
@@ -55,38 +53,36 @@ body {
 }
 
 /* =========================================
-   TABLE MARKINGS (Painted on the felt)
+   3. TABLE MARKINGS (Responsive Paint)
    ========================================= */
 .table-markings {
   position: absolute;
-  top: 35%;
+  top: 38%;
   width: 100%;
   text-align: center;
-  color: rgba(228, 200, 113, 0.6);
-  /* Faded Gold Paint */
+  color: rgba(228, 200, 113, 0.4);
   pointer-events: none;
-  /* Let clicks pass through */
+  z-index: 1;
 }
 
 .payout-text {
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  letter-spacing: 4px;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.2rem, 3vw, 3rem);
+  letter-spacing: clamp(2px, 0.5vw, 6px);
+  margin-bottom: 1vh;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .dealer-rules {
-  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.7rem, 1.5vw, 1.5rem);
   letter-spacing: 2px;
-  margin-bottom: 3rem;
-  color: rgba(255, 255, 255, 0.5);
-  /* Faded White Paint */
+  margin-bottom: 5vh;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .insurance-line {
   width: 120%;
-  height: 300px;
-  border-top: 3px solid rgba(228, 200, 113, 0.4);
+  height: clamp(150px, 30vh, 400px);
+  border-top: 3px solid rgba(228, 200, 113, 0.3);
   border-radius: 50% 50% 0 0;
   position: absolute;
   left: -10%;
@@ -95,34 +91,46 @@ body {
 
 .insurance-line span {
   position: relative;
-  top: -15px;
+  top: -clamp(10px, 2vh, 20px);
   background: #0d4a23;
-  /* Match felt behind text */
   padding: 0 15px;
-  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.7rem, 1.5vw, 1.4rem);
   letter-spacing: 3px;
 }
 
 /* =========================================
-   GAME LAYOUT & CARDS
+   4. TOP NAVIGATION & BANK
    ========================================= */
 .top-nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 1.5rem;
+  align-items: flex-start;
+  padding: clamp(1rem, 2vw, 2rem);
   z-index: 10;
+}
+
+.financials {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: clamp(0.5rem, 1vh, 1rem);
 }
 
 .bank-display {
   background: rgba(0, 0, 0, 0.6);
-  padding: 0.8rem 1.5rem;
+  padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
   border-radius: 8px;
   border: 1px solid rgba(228, 200, 113, 0.3);
   color: #e4c871;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  min-width: clamp(160px, 15vw, 200px);
+  text-align: right;
 }
 
+/* =========================================
+   5. GAME LAYOUT SECTIONS
+   ========================================= */
 .table-section {
   display: flex;
   flex-direction: column;
@@ -132,103 +140,183 @@ body {
 }
 
 .dealer-section {
-  margin-top: -2rem;
-  min-height: 160px;
+  margin-top: clamp(0.5rem, 2vh, 2rem);
+  margin-bottom: auto;
+  min-height: 12vh;
+  z-index: 10;
 }
 
 .player-section {
   margin-top: auto;
   margin-bottom: 0;
-  min-height: 150px;
+  padding-top: clamp(2rem, 5vh, 6rem);
+  /* Unbreakable gap between dealer & player */
+  min-height: 15vh;
   position: relative;
   z-index: 30;
+  width: 100%;
 }
 
-.card-rack {
+/* =========================================
+   6. DYNAMIC CARDS & SPLIT HANDS
+   ========================================= */
+.player-hands-container:empty {
+  min-height: 0;
+  display: none;
+}
+
+.player-hands-container {
   display: flex;
+  gap: clamp(1rem, 3vw, 3rem);
   justify-content: center;
-  align-items: center;
-  min-height: 140px;
-}
-
-.card-rack img {
-  width: clamp(70px, 9vw, 110px);
-  margin-left: -35px;
-  /* Realistic Overlap */
-  border-radius: 6px;
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s;
-}
-
-.card-rack img:first-child {
-  margin-left: 0;
-}
-
-.card-rack img:hover {
-  transform: translateY(-10px);
+  align-items: flex-end;
+  width: 100%;
+  min-height: 12vh;
+  /* Adds protective spacing above the chips */
+  margin-bottom: clamp(1rem, 3vh, 3rem);
+  position: relative;
   z-index: 10;
 }
 
+.hand-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+  transform: scale(0.9);
+}
+
+.hand-wrapper.active-hand {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hand-wrapper.active-hand .score-badge {
+  border-color: #00f0ff;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  color: #00f0ff;
+}
+
+.card-rack, .player-cards, .dealer-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(6px, 1vw, 16px);
+  min-height: 10vh;
+}
+
+.card-rack img, .player-cards img, .dealer-cards img {
+  width: clamp(55px, 12vh, 130px);
+  /* Height-aware scaling prevents vertical overlap */
+  margin: 0 !important;
+  border-radius: clamp(4px, 0.5vw, 8px);
+  box-shadow: 2px 5px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.card-rack img:hover, .player-cards img:hover, .dealer-cards img:hover {
+  transform: translateY(clamp(-10px, -2vh, -20px)) scale(1.05);
+  z-index: 20;
+  box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* =========================================
+   7. BADGES & RESULTS BANNERS
+   ========================================= */
 .score-badge {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   padding: 0.3rem 1rem;
   border-radius: 20px;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   color: #fff;
   margin: 10px 0;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* =========================================
-   BETTING CIRCLE & CHIPS
-   ========================================= */
-.betting-circle {
-  width: 90px;
-  height: 90px;
-  border: 3px solid rgba(228, 200, 113, 0.5);
-  border-radius: 50%;
-  margin: 1rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.play-on {
+.score-output {
+  position: absolute;
+  top: -clamp(30px, 5vh, 60px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #e4c871;
   color: #e4c871;
-  font-size: 1.2rem;
-  text-shadow: 1px 1px 2px #000;
-  z-index: 10;
+  padding: clamp(0.5rem, 1vh, 1rem) clamp(1rem, 3vw, 3rem);
+  border-radius: 8px;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  white-space: nowrap;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  z-index: 40;
 }
 
+/* =========================================
+   8. BETTING WAGER BADGE (Navigation Group)
+   ========================================= */
+.active-bet-badge {
+  background: rgba(10, 15, 20, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  border-radius: 8px;
+  padding: clamp(0.5rem, 1vh, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: clamp(160px, 15vw, 200px);
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(0, 240, 255, 0.15);
+}
+
+.bet-label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(0.55rem, 1vw, 0.75rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #a0aab5;
+  margin-bottom: 0.1rem;
+}
+
+.active-bet-badge .play-on {
+  color: #00f0ff;
+  font-size: clamp(1.1rem, 2vh, 1.5rem);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+  font-weight: bold;
+  margin: 0;
+  min-height: 1.5rem;
+}
+
+/* =========================================
+   9. CHIPS RACK & BETTING CONTROLS
+   ========================================= */
 .betting-controls {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 1rem;
+  padding-bottom: clamp(0.5rem, 2vh, 2rem);
   z-index: 10;
   flex-shrink: 0;
 }
 
 .chips-rack {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: clamp(8px, 1.5vh, 15px) clamp(15px, 3vw, 30px);
   border-radius: 50px;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.5rem, 1.5vh, 1.5rem);
   border: 2px solid #222;
   box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.8);
 }
 
 .chips {
   display: flex;
-  gap: 8px;
+  gap: clamp(6px, 1vw, 12px);
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .chip {
-  width: 55px;
+  width: clamp(45px, 6vw, 75px);
+  /* Scales cleanly up to 4K displays */
   cursor: pointer;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.6));
   transition: transform 0.2s;
@@ -239,22 +327,22 @@ body {
 }
 
 /* =========================================
-   CONTROLS & BUTTONS
+   10. GLOBAL ACTION BUTTONS
    ========================================= */
-.action-buttons, .game-controls {
+.action-buttons, .game-controls, .insurance-actions {
   display: flex;
-  gap: 1rem;
+  gap: clamp(0.5rem, 1.5vw, 1.5rem);
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
   z-index: 10;
 }
 
 .btn {
   font-family: 'Aclonica', sans-serif;
-  padding: 0.8rem 1.5rem;
+  padding: clamp(0.6rem, 1.2vh, 1rem) clamp(1rem, 2vw, 2rem);
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 1.2vw, 1.2rem);
   cursor: pointer;
   border: none;
   transition: all 0.2s;
@@ -298,27 +386,33 @@ body {
 }
 
 /* =========================================
-   NOTIFICATIONS & BANNERS
+   11. MODALS, TOASTS & ALERTS
    ========================================= */
-.score-output {
+.insurance-prompt {
   position: absolute;
-  top: -40px;
+  top: 45%;
   left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  border: 2px solid #e4c871;
-  color: #e4c871;
-  padding: 0.5rem 2rem;
-  border-radius: 8px;
-  font-size: 1.5rem;
-  white-space: nowrap;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-  z-index: 20;
+  transform: translate(-50%, -50%);
+  background: rgba(10, 10, 15, 0.95);
+  border: 2px solid #ffaa00;
+  padding: clamp(1rem, 3vh, 2rem) clamp(2rem, 5vw, 4rem);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 170, 0, 0.2);
+  z-index: 100;
+  animation: popIn 0.3s ease-out;
+}
+
+.insurance-prompt p {
+  color: #fff;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
 }
 
 .toast-container {
   position: fixed;
-  top: 30px;
+  top: clamp(15px, 3vh, 40px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
@@ -331,9 +425,9 @@ body {
 .toast {
   background: rgba(0, 0, 0, 0.9);
   color: #fff;
-  padding: 1rem 2rem;
+  padding: clamp(0.8rem, 1.5vh, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
   border-radius: 8px;
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
   border-left: 5px solid #e4c871;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
   opacity: 0;
@@ -354,7 +448,6 @@ body {
   border-left-color: #ffaa00;
 }
 
-/* Rules Modal */
 .table-modal {
   position: absolute;
   top: 50%;
@@ -362,10 +455,10 @@ body {
   transform: translate(-50%, -50%) scale(0.9);
   background: #1a1a1a;
   border: 2px solid #e4c871;
-  padding: 2rem;
+  padding: clamp(1.5rem, 3vh, 2.5rem);
   border-radius: 12px;
   width: 90%;
-  max-width: 500px;
+  max-width: 600px;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
@@ -384,160 +477,24 @@ body {
   margin-bottom: 1rem;
   border-bottom: 1px solid #333;
   padding-bottom: 0.5rem;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
 }
 
 .table-modal ol {
   padding-left: 1.5rem;
   margin-bottom: 1.5rem;
   line-height: 1.6;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  color: #ccc;
 }
 
+/* =========================================
+   12. ANIMATIONS & UTILITIES
+   ========================================= */
 .hide-toggle {
   display: none !important;
 }
 
-/* Mobile optimization */
-@media (max-width: 600px) {
-  .casino-table {
-    padding: 0.5rem;
-  }
-
-  .table-felt {
-    border-width: 6px;
-  }
-
-  .payout-text {
-    letter-spacing: 2px;
-  }
-
-  .insurance-line {
-    height: 200px;
-  }
-
-  .chip {
-    width: 45px;
-  }
-
-  .btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
-  }
-}
-
-/* =========================================
-   SPLIT HANDS & INSURANCE UI
-   ========================================= */
-.player-hands-container:empty {
-  min-height: 0;
-  display: none;
-}
-
-.player-hands-container {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: flex-end;
-  width: 100%;
-  min-height: 140px;
-  position: relative;
-  z-index: 10;
-}
-
-.hand-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.3s ease;
-  opacity: 0.5;
-  /* Dim inactive hands */
-  transform: scale(0.9);
-}
-
-.hand-wrapper.active-hand {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.hand-wrapper.active-hand .score-badge {
-  border-color: #00f0ff;
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-  color: #00f0ff;
-}
-
-.insurance-prompt {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(10, 10, 15, 0.95);
-  border: 2px solid #ffaa00;
-  padding: 1.5rem 3rem;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 170, 0, 0.2);
-  z-index: 100;
-  animation: popIn 0.3s ease-out;
-}
-
-.insurance-prompt p {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-}
-
-.insurance-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-/* =========================================
-   PREMIUM BETTING BADGE (Glassmorphism + Neon)
-   ========================================= */
-.bet-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1.5rem auto 2.5rem auto;
-  position: relative;
-  z-index: 20;
-}
-
-.active-bet-badge {
-  background: rgba(10, 15, 20, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 240, 255, 0.4);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 240, 255, 0.15);
-  border-radius: 50px;
-  padding: 0.6rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 200px;
-}
-
-.bet-label {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #a0aab5;
-  margin-bottom: 0.3rem;
-}
-
-.active-bet-badge .play-on {
-  color: #00f0ff;
-  font-size: 1.8rem;
-  text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
-  font-weight: bold;
-  margin: 0;
-}
-
-/* =========================================
-   3D CARD DEALING ANIMATION
-   ========================================= */
 @keyframes dealCard3D {
   0% {
     opacity: 0;
@@ -550,25 +507,18 @@ body {
   }
 }
 
-.card-rack img {
-  width: clamp(70px, 9vw, 110px);
-  margin-left: -35px;
-  border-radius: 6px;
-  box-shadow: -6px 8px 15px rgba(0, 0, 0, 0.6), inset 0 0 2px rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease;
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
-.card-rack img:first-child {
-  margin-left: 0;
-}
-
-.card-rack img:hover {
-  transform: translateY(-15px) scale(1.05);
-  z-index: 20;
-  box-shadow: -8px 12px 20px rgba(0, 0, 0, 0.8);
-}
-
-/* This class will now be applied dynamically by JS */
 .deal-anim {
   animation: dealCard3D 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
